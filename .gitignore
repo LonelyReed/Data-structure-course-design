@@ -1,69 +1,47 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
+# Visual Studio 生成及临时文件
+.vs/
+Debug/
+Release/
+x64/
+x86/
+[Bb]in/
+[Bb]uild/
+[Oo]ut/
+ipch/
 *.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-*.so.*
-
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
 *.exe
-*.out
-*.app
+*.pdb
+*.ilk
+*.idb
+*.ipdb
+*.iobj
+*.ipch
+*.log
+*.tlog
+*.lastbuildstate
+*.suo
+*.sln.docstates
+*.user
+*.aps
+*.rc2
 
-# Build directories
-build/
-Build/
-build-*/
+# 编译中间文件
+*.tmp
+*.rsp
+*.dll
+*.lib
+*.exp
 
-# CMake generated files
+# 操作系统杂物
+Thumbs.db
+.DS_Store
+
+# 如果将来使用 CMake（可选）
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
-Makefile
-install_manifest.txt
-compile_commands.json
 
-# Temporary files
-*.tmp
-*.log
-*.bak
+# 其他编辑器/IDE 配置
+.vscode/
+.idea/
 *.swp
-
-# vcpkg
-vcpkg_installed/
-
-# debug information files
-*.dwo
-
-# test output & cache
-Testing/
-.cache/
