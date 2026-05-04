@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\Common">
+      <UniqueIdentifier>{9ef76a20-1115-4a76-ac07-fdbe3b6e4e4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\DataStructures">
+      <UniqueIdentifier>{4d6dd25d-b52b-4bdd-ae01-07264c09a57b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Database">
+      <UniqueIdentifier>{c274ffee-576e-4808-bf0e-84c1e4f42120}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\DataStructures">
+      <UniqueIdentifier>{fa7a2d90-f12c-47b6-9604-167a00f9a450}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Database">
+      <UniqueIdentifier>{16bea45f-8080-41bc-b31a-8e12bf7d1942}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\FileIO">
+      <UniqueIdentifier>{e87bec1b-4ccd-48b1-9cbc-e6c1c419cfe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\UI">
+      <UniqueIdentifier>{7c92181e-0596-4dfb-b3a5-4a2d64df5300}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\FileIO">
+      <UniqueIdentifier>{4cf45620-7d1f-4fb6-b9bf-ab62e0ae8294}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\UI">
+      <UniqueIdentifier>{63b9953e-aa22-45bf-875d-3c5c8092aef9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\common.h">
+      <Filter>头文件\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\database.h">
+      <Filter>头文件\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="include\table.h">
+      <Filter>头文件\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="include\award.h">
+      <Filter>头文件\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="include\contest.h">
+      <Filter>头文件\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="include\linkedlist.h">
+      <Filter>头文件\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="include\student.h">
+      <Filter>头文件\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="include\fileio.h">
+      <Filter>头文件\FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ui.h">
+      <Filter>头文件\UI</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\database.cpp">
+      <Filter>源文件\Database</Filter>
+    </ClCompile>
+    <ClCompile Include="src\table.cpp">
+      <Filter>源文件\Database</Filter>
+    </ClCompile>
+    <ClCompile Include="src\award.cpp">
+      <Filter>源文件\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contest.cpp">
+      <Filter>源文件\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\linkedlist.cpp">
+      <Filter>源文件\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\student.cpp">
+      <Filter>源文件\DataStructures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fileio.cpp">
+      <Filter>源文件\FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui.cpp">
+      <Filter>源文件\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\awards.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="data\contests.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="data\students.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
