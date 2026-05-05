@@ -7,6 +7,7 @@
 #include <sstream>
 #include <vector>
 #include <cstddef>			//使用size_t
+#include <utility>			//使用std::move
 
 //全局常量
 const std::string DATA_DIR = "data/";		//数据文件夹根目录

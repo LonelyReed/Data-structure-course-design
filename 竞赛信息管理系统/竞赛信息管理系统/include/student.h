@@ -1,7 +1,6 @@
 #pragma once
 
 #include "common.h"
-#include "linkedlist.h"
 
 //定义学生节点的data(class和struct几乎没区别)
 class Student

@@ -28,7 +28,7 @@ public:
 	LinkedList()
 	{
 		//生成一个带头节点的空链表
-		head = new Node<T>
+		head = new Node<T>;
 		tail = head;				//初始时尾指针指向头节点
 		count = 0;
 	}
