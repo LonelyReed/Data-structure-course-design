@@ -8,7 +8,8 @@ struct Node
 	T data;
 	Node* next;
 	//定义构造函数，初始化Node
-	Node(const T& value) : data(value), next(nullptr) {}
+	Node() : next(nullptr) {}									//无参构造，用于头节点
+	Node(const T& value) : data(value), next(nullptr) {}		//带参构造，用于普通节点
 };
 
 //链表模板
@@ -27,8 +28,7 @@ public:
 	LinkedList()
 	{
 		//生成一个带头节点的空链表
-		head = new Node<T>;
-		head->next = nullptr;
+		head = new Node<T>
 		tail = head;				//初始时尾指针指向头节点
 		count = 0;
 	}
@@ -52,47 +52,35 @@ public:
 	void insertSorted(const T& value)
 	{
 		Node<T>* newNode = new Node<T>(value);
-
-		Node<T>* p = head->next;
-		//空表
-		if (!p)				
-		{
-			newNode->next = p;
-			head->next = newNode;
-
-			//如果之前为空表，尾指针要移动
-			if (!tail)
-			{
-				tail = head->next;
-			}
-
-			//节点数加1
-			count++;
-			return;
-		}
-
-		//如果不是空表
 		Node<T>* prev = head;			//双指针移动
-		while (p && value > p->data)	//注意重载<
+		Node<T>* p = head->next;
+
+		while (p && p->data < value)	//注意重载<
 		{
 			p = p->next;
 			prev = prev->next;
 		}
 
+		//重复检测，插入不允许重复
+		if (p && value == p->data)
+		{
+			delete newNode;
+			return;
+		}
 
 		newNode->next = p;
 		prev->next = newNode;
 		
 		//如果刚好插到尾部，tail要更新
-		if (tail->next)
+		if (!newNode->next)
 		{
-			tial = newNode;
+			tail = newNode;
 		}
 		count++;
 		return;
 	}
 
-	//尾部添加
+	//尾部添加，加快读取数据库的速度
 	void push_back(const T& value)
 	{
 		Node<T>* newNode = new Node<T>(value);
@@ -136,15 +124,11 @@ public:
 			return false;
 		}
 
-		//找到并删除
-		if (!prev)
+		prev->next = p->next;
+		//如果删除的是尾节点
+		if (p == tail)
 		{
-			//如果是最后一个节点，尾指针要更新
-			if (!p->next)
-			{
-				tail = prev;
-			}
-			prev->next = p->next;
+			tail = prev;
 		}
 
 		//目标p找到并断开连接，释放
@@ -182,6 +166,7 @@ public:
 	}
 
 	//读取头节点，用于数据库的双链联动
+	//仅供Table等内部类使用，外部不要直接操作
 	const Node<T>* getHead() const
 	{
 		return head;
@@ -196,21 +181,18 @@ public:
 	//检查空表
 	bool empty() const
 	{
-		if (count == 0)
-		{
-			return true;
-		}
-		return false;
-		}
+		return count == 0;
+	}
 
 	//打印链表
 	void print() const
 	{
-		//使用匿名函数，没有传入参数，注意重载<<
-		traverse([](const T& value) {
-			std::cout << value << std::endl;
-			});
+		//使用匿名函数，[]没有传入参数，注意重载<<
+		traverse([](const T& value) {std::cout << value << std::endl;});
 
-		std::cout << endl;
+		std::cout << std::endl;
 	}
+
+	//设置Table类为友元，可直接操作链表
+	template <typename> friend class Table;
 };
