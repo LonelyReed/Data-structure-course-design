@@ -37,7 +37,7 @@ public:
 	}
 
 	//从一行文本解析出对象节点——静态函数
-	static bool fromLine(const std::string& line, Student& out)
+	static bool fromLine(const std::string& line, Student& out)					//定义为静态函数，是因为读取时候没有实例对象，只能依靠类直接调用生成实例对象
 	{
 		//空行直接放回false
 		if (line.empty())	return false;
