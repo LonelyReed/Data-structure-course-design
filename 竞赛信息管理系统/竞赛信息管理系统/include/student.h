@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common.h"
+#include <sstream>
 
 //定义学生节点的data(class和struct几乎没区别)
 class Student
@@ -8,7 +9,7 @@ class Student
 public:
 	std::string id;
 	std::string name;
-	int grade;
+	int grade;				//年级
 	std::string major;		//专业
 
 	//无参构造
@@ -29,7 +30,36 @@ public:
 		return id == s.id;
 	}
 
-	
+	//将对象节点格式化为一行文本
+	std::string toLine() const
+	{
+		return id + DELIMITER + name + DELIMITER + std::to_string(grade) + DELIMITER + major;
+	}
+
+	//从一行文本解析出对象节点——静态函数
+	static bool fromLine(const std::string& line, Student& out)
+	{
+		//空行直接放回false
+		if (line.empty())	return false;
+
+		// 按顺序读取：学号 -> '|' -> 姓名 -> '|' -> 年级 -> '|' -> 专业
+		std::stringstream ss(line);
+		std::string id, name, major;
+		int grade;
+		char delim;
+		if(std::getline(ss,id,DELIMITER)			//getline(ss,str,'|')只能读取str，遇到'|'就停止，并去除'|'
+			&& std::getline(ss,name,DELIMITER)
+			&& (ss >> grade >> delim)				//grade是int,先按照整数格式解析grade，解析完后就会停留在后面的'|'
+			&& delim == DELIMITER					//此时读入的delim就是'|'
+			&& std::getline(ss, major))
+		{
+			//全部读取成功，构造一个学生对象塞给 out
+			out = Student(id,name,grade,major);
+			return true;
+		}
+		return false;
+	}
+
 };
 
 //<<流输出重载
