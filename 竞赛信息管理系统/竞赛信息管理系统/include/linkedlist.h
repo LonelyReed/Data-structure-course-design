@@ -194,5 +194,6 @@ public:
 	}
 
 	//设置Table类为友元，可直接操作链表
+	//允许Table类访问linkedlist类的所有成员
 	template <typename> friend class Table;
 };
