@@ -79,7 +79,7 @@ public:
 		std::ifstream file(filename);
 		if (!file.is_open())
 		{
-			std::cerr << "Warning: Cannot open" << filename << std::endl;
+			std::cerr << " Warning: Cannot open " << filename << std::endl;
 			return;
 		}
 
@@ -110,7 +110,7 @@ public:
 	}
 
 	//保存文件
-	void saveFile() const
+	void saveToFile() const
 	{
 		//写入方式打开文件
 		std::ofstream file(filename);
