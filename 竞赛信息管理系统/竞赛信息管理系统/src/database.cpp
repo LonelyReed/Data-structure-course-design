@@ -291,8 +291,8 @@ void Database::showStudentAwards(const std::string& stuID) const
 		if (a.studentID == stuID)
 		{
 			std::cout << a << std::endl;
+			isAward = true;
 		}
-		isAward = true;
 	});
 
 	//没有获奖记录
@@ -330,8 +330,8 @@ void Database::showContestAwards(const std::string& conID) const
 		if (a.contestID == conID)
 		{
 			std::cout << a << std::endl;
+			isAward = true;
 		}
-		isAward = true;
 		});
 
 	//没有获奖记录
