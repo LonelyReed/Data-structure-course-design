@@ -28,17 +28,47 @@ public:
 	bool loadAll();
 	bool saveAll() const;
 	
+	//单表操作——增,删,查，打印，清空链表
+
+	//学生表
+	bool insertStudent(const Student& s);
+	bool removeStudentByKey(const std::string& stuID);
+	const Student* findStudent(const std::string& stuID) const;
+	void printStudents() const;
+	void clearStudents();
+
+	//竞赛表
+	bool insertContest(const Contest& c);
+	bool removeContestByKey(const std::string& conID);
+	const Contest* findContest(const std::string& conID) const;
+	void printContests() const;
+	void clearContests();
+
+	//获奖表
+	bool insertAward(const Award& a);
+	bool removeAwardByKey(int awardID);
+	const Award* findAward(int awardId) const;
+	void printAwards() const;
+	void clearAwards();
+
+
 	//跨表操作
 
 	//添加获奖，学生学号校验+竞赛编号校验
 	bool addAward(const std::string& stuID, const std::string& conID, const std::string& prize, std::string& time);
 
 	//删除学生，同时删除获奖记录
-	bool removeStudent(const std::string& stuID);
+	bool removeStudentAwards(const std::string& stuID);
 
 	//查询学生所有获奖信息
 	void showStudentAwards(const std::string& stuID) const;
 
-	//查询比赛获奖人数排名
-	void showContestRanking() const;
+	////查询比赛获奖人数排名
+	//void showContestRanking() const;
+
+	//查询比赛获奖情况
+	void showContestAwards(const std::string& conID) const;
+
+
+	
 };
