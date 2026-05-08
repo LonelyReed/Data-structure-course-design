@@ -43,7 +43,7 @@ const Student* Database::findStudent(const std::string& stuID) const
 
 void Database::printStudents() const
 {
-	studentTable.traverse([](const Student& s) {std::cout << s << std::endl; });
+	studentTable.print();
 }
 
 void Database::clearStudents()
@@ -73,7 +73,7 @@ const Contest* Database::findContest(const std::string& conID) const
 
 void Database::printContests() const
 {
-	contestTable.traverse([](const Contest& c) {std::cout << c << std::endl; });
+	contestTable.print();
 }
 
 void Database::clearContests()
@@ -103,7 +103,7 @@ const Award* Database::findAward(int awardID) const
 
 void Database::printAwards() const
 {
-	awardTable.traverse([](const Award& a) {std::cout << a << std::endl; });
+	awardTable.print();
 }
 
 void Database::clearAwards()

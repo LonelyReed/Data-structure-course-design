@@ -61,6 +61,12 @@ public:
 		list.traverse(func);
 	}
 
+	//打印
+	void print() const
+	{
+		list.print();
+	}
+
 	//获取表中记录总数
 	size_t size() const
 	{
