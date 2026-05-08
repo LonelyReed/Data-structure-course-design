@@ -60,15 +60,24 @@ public:
 	//删除学生，同时删除获奖记录
 	bool removeStudentAwards(const std::string& stuID);
 
+	//删除竞赛，同时删除获奖记录
+	bool removeContestAwards(const std::string& conID);
+
+	//按学号、比赛名称、获奖级别删除对应获奖记录
+	bool removeAwardByDetails(const std::string& stuID, const std::string& conName, const std::string& prize);
+
+	//按比赛名称删除该比赛所有获奖记录
+	bool removeAwardsByConName(const std::string& conName);
+
 	//查询学生所有获奖信息
 	void showStudentAwards(const std::string& stuID) const;
 
-	////查询比赛获奖人数排名
-	//void showContestRanking() const;
+	//查询比赛获奖人数排名
+	void showContestRanking() const;
 
 	//查询比赛获奖情况
 	void showContestAwards(const std::string& conID) const;
 
-
-	
+	//清空三张表
+	void clearAllFiles();
 };
