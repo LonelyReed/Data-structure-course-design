@@ -283,6 +283,108 @@ void UI::awardMenu()
     int choice;
     do
     {
+        std::cout << "\n--- 获奖记录管理 ---\n"
+            << "1. 添加获奖记录\n"                    
+            << "2. 按条件删除获奖记录\n"        
+            << "3. 按学号删除所有相关获奖记录\n"
+            << "4. 按比赛名称删除所有相关获奖\n"      
+            << "5. 列出所有获奖记录\n"
+            << "0. 返回主菜单\n";
+        choice = getIntInput("请选择：");
+
+        switch (choice)
+        {
+        //添加获奖记录
+        case 1:
+        {
+            std::string stuID = getStringInput("请输入学号：");
+            std::string conID = getStringInput("请输入竞赛编号：");
+            std::string prize = getStringInput("请输入获奖级别：");
+            std::string time = getStringInput("请输入获奖年份：");
+
+            if (db.addAward(stuID, conID, prize, time))
+            {
+                std::cout << "获奖记录添加成功" << std::endl;
+            }
+            else
+            {
+                std::cout << "添加失败！学号或竞赛不存在" << std::endl;
+            }
+
+            pause();
+            break;
+        }
+        //按条件删除对应获奖记录
+        case 2:
+        {
+            std::string stuID = getStringInput("请输入学号：");
+            std::string conName = getStringInput("请输入比赛名称：");
+            std::string prize = getStringInput("请输入获奖级别：");
+
+            if (db.removeAwardByDetails(stuID, conName, prize))
+            {
+                std::cout << "获奖记录删除成功" << std::endl;
+            }
+            else
+            {
+                std::cout << "删除失败！没有找到相关记录" << std::endl;
+            }
+
+            pause();
+            break;
+        }
+        //按学号删除所有相关获奖记录
+        case 3:
+        {
+            std::string id = getStringInput("请输入学生学号：");
+   
+
+            pause();
+            break;
+        }
+        //按比赛名称删除所有相关获奖记录
+        case 4:
+        {
+            std::string conName = getStringInput("请输入竞赛编号：");
+            std::string confirm = getStringInput("确定要删除比赛" + conName + "的所有相关获奖记录吗？[y/n]:");
+
+            if (confirm == "y" || confirm == "Y")
+            {
+                if (db.removeAwardsByConName(conName))
+                {
+                    std::cout << "该比赛的所有相关获奖记录都已删除" << std::endl;
+                }
+                else
+                {
+                    std::cout << "删除失败！比赛名称可能不存在" << std::endl;
+                }
+            }
+            else
+            {
+                std::cout << "已取消操作" << std::endl;
+            }
+
+            pause();
+            break;
+        }
+        //打印所有获奖记录
+        case 5:
+        {
+            db.printAwards();
+            pause();
+            break;
+        }
+        //退回主菜单
+        case 0:
+        {
+            break;
+        }
+        //无效输入
+        default:
+        {
+            std::cout << "无效输入，请重新输入" << std::endl;
+        }
+        }
 
     } while (choice != 0);
 }
