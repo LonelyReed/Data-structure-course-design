@@ -49,6 +49,11 @@ std::string UI::getStringInput(const std::string& prompt)
 {
     std::string value;
     std::cout << prompt;
+    //防御性机制，清除上一次输入可能遗漏的\n
+    if (std::cin.peek() == '\n')
+    {
+        std::cin.ignore();
+    }
     std::getline(std::cin, value);
     return value;
 }
@@ -411,24 +416,18 @@ void UI::queryMenu()
     int choice;
     do
     {
-        std::cout << "\n--- 综合查询与统计 ---\n"
-            << "1. 显示所有获奖信息（从文件读取）\n"     
-            << "2. 按学号查询学生获奖情况\n"            
-            << "3. 按比赛名称查询该比赛获奖情况\n"       
-            << "4. 竞赛获奖人数排行榜\n"
+        std::cout << "\n--- 综合查询与统计 ---\n"    
+            << "1. 按学号查询学生获奖情况\n"            
+            << "2. 按比赛名称查询该比赛获奖情况\n"       
+            << "3. 竞赛获奖人数排行榜\n"
             << "0. 返回主菜单\n";
         
         choice = getIntInput("请选择：");
     
         switch (choice)
         {
-        case 1:
-        {
-            pause();
-            break;
-        }
         //按学号查询学生获奖记录
-        case 2:
+        case 1:
         {
             std::string stuID = getStringInput("请输入学号：");
             db.showStudentAwards(stuID);
@@ -436,7 +435,7 @@ void UI::queryMenu()
             break;
         }
         //按比赛名称查询该比赛获奖记录
-        case 3:
+        case 2:
         {
             std::string conName = getStringInput("请输入比赛名称：");
             db.showContestAwards(conName);
@@ -444,7 +443,7 @@ void UI::queryMenu()
             break;
         }
         //竞赛获奖人数排行
-        case 4:
+        case 3:
         {
             db.showContestRanking();
             pause();
