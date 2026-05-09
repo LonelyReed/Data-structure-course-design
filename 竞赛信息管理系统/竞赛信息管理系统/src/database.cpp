@@ -115,7 +115,7 @@ void Database::clearAwards()
 //跨表操作
 
 //添加获奖
-bool Database::addAward(const std::string& stuID, const std::string& conID, const std::string& prize, std::string& time)
+bool Database::addAward(const std::string& stuID, const std::string& conID, const std::string& prize, const std::string& time)
 {
 	//学号检验——学生必须存在
 	if (!findStudent(stuID))
@@ -344,12 +344,10 @@ void Database::showContestAwards(const std::string& conID) const
 //清空三张表
 void Database::clearAllFiles()
 {
-	clearStudents();
-	clearContests();
-	clearAwards();
+	studentTable.truncateFile();
+	contestTable.truncateFile();
+	awardTable.truncateFile();
 
-	//清空完后一定要保存
-	saveAll();
-	std::cout << " 所有数据已清空，文件内容已经删除 " << std::endl;
+	std::cout << " 所有文件内容已经删除 " << std::endl;
 
 }

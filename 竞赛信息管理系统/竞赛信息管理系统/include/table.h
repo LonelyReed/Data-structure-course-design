@@ -73,7 +73,7 @@ public:
 		return list.size();
 	}
 
-	//清空表
+	//清空链表
 	void clear()
 	{
 		if (!list.empty()) return list.clear();
@@ -107,7 +107,7 @@ public:
 			}
 			else
 			{
-				std::cerr << "Skipping bad line:" << line << std::endl;
+				std::cerr << " Skipping bad line: " << line << std::endl;
 			}
 		}
 
@@ -120,15 +120,31 @@ public:
 	{
 		//写入方式打开文件
 		std::ofstream file(filename);
-		if (!file) return;
 		if (!file.is_open())
 		{
-			std::cerr << "Error: Cannot write to file" << filename << std::endl;
+			std::cerr << " Error: Cannot write to file " << filename << std::endl;
 			return;
 		}
 		list.traverse([&file](const T& record) {file << record.toLine() << std::endl; });
 
 		//关闭文件
 		file.close();
+	}
+
+	//删除文件——以截断式方法打开文件
+	void truncateFile()
+	{
+		std::ofstream file(filename, std::ios::trunc);
+		//没有打开
+		if (!file.is_open())
+		{
+			std::cerr << " Error: Cannot truncate file " << filename << std::endl;
+			return;
+		}
+		
+		//完成后关闭文件
+		file.close();
+		std::cout << filename << " 文件数据已清空 " << std::endl;
+
 	}
 };
