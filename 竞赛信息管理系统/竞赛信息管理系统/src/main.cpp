@@ -3,7 +3,7 @@
 
 int main()
 {
-	Database db("students.txt", "contests.txt", "awards.txt");
+	Database db(STUDENT_FILE, CONTEST_FILE, AWARD_FILE);
 	
 	//╪стьнд╪Ч
 	db.loadAll();

@@ -146,7 +146,7 @@ void UI::studentMenu()
             }
             else
             {
-                std::cout << s << std::endl;
+                std::cout << *s << std::endl;               //注意这是一个指针，输出指向的值要加*
             }
 
             pause();
@@ -253,7 +253,7 @@ void UI::contestsMenu()
             }
             else
             {
-                std::cout << c << std::endl;
+                std::cout << *c << std::endl;
             }
             pause();
             break;
@@ -437,7 +437,7 @@ void UI::queryMenu()
         //按比赛名称查询该比赛获奖记录
         case 2:
         {
-            std::string conName = getStringInput("请输入比赛名称：");
+            std::string conName = getStringInput("请输入比赛名称："); 
             db.showContestAwards(conName);
             pause();
             break;

@@ -44,7 +44,7 @@ public:
 		int awardID;
 		std::string studentID, contestID, prize, time;
 		char delim;
-		if ((ss >> awardID >> delim)				//grade是int,先按照整数格式解析grade，解析完后就会停留在后面的'|'
+		if ((ss >> awardID >> delim)				//awardID是int,先按照整数格式解析awardID，解析完后就会停留在后面的'|'
 			&& delim == DELIMITER
 			&& std::getline(ss, studentID, DELIMITER)			//getline(ss,str,'|')只能读取str，遇到'|'就停止，并去除'|'
 			&& std::getline(ss, contestID, DELIMITER)
