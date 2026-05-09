@@ -15,7 +15,7 @@ private:
 
 public:
 	//构造函数，传入三个文件名作为参数
-	Database(const std::string& stuFile, const std::string& conFile, std::string& awardFile)
+	Database(const std::string& stuFile, const std::string& conFile, const std::string& awardFile)
 		: studentTable(stuFile),contestTable(conFile),awardTable(awardFile){ }
 	//析构函数，保持默认
 	~Database() = default;
