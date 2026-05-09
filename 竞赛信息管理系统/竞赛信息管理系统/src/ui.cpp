@@ -287,7 +287,7 @@ void UI::awardMenu()
             << "1. 添加获奖记录\n"                    
             << "2. 按条件删除获奖记录\n"        
             << "3. 按学号删除所有相关获奖记录\n"
-            << "4. 按比赛名称删除所有相关获奖\n"      
+            << "4. 按比赛名称删除所有相关获奖记录\n"      
             << "5. 列出所有获奖记录\n"
             << "0. 返回主菜单\n";
         choice = getIntInput("请选择：");
@@ -337,7 +337,12 @@ void UI::awardMenu()
         case 3:
         {
             std::string id = getStringInput("请输入学生学号：");
-   
+            std::string confirm = getStringInput("确定要删除学号为" + id + "的学生的所有获奖记录吗？[y/n]");
+
+            if (confirm == "y" || confirm == "Y")
+            {
+                if(db.remove)
+            }
 
             pause();
             break;
@@ -395,7 +400,58 @@ void UI::queryMenu()
     int choice;
     do
     {
+        std::cout << "\n--- 综合查询与统计 ---\n"
+            << "1. 显示所有获奖信息（从文件读取）\n"     
+            << "2. 按学号查询学生获奖情况\n"            
+            << "3. 按比赛名称查询该比赛获奖情况\n"       
+            << "4. 竞赛获奖人数排行榜\n"
+            << "0. 返回主菜单\n";
+        
+        choice = getIntInput("请选择：");
+    
+        switch (choice)
+        {
+        case 1:
+        {
+            pause();
+            break;
+        }
+        //按学号查询学生获奖记录
+        case 2:
+        {
+            std::string stuID = getStringInput("请输入学号：");
+            db.showStudentAwards(stuID);
+            pause();
+            break;
+        }
+        //按比赛名称查询该比赛获奖记录
+        case 3:
+        {
+            std::string conName = getStringInput("请输入比赛名称：");
+            db.showContestAwards(conName);
+            pause();
+            break;
+        }
+        //竞赛获奖人数排行
+        case 4:
+        {
+            db.showContestRanking();
+            pause();
+            break;
+        }
+        //退回主菜单
+        case 0:
+        {
+            break;
+        }
+        //无效输入
+        default:
+        {
+            std::cout << "无效输入，请重新输入" << std::endl;
+            pause();
+        }
 
+        }
     } while (choice != 0);
 }
 

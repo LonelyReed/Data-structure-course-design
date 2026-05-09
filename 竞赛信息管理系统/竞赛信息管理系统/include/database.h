@@ -66,6 +66,9 @@ public:
 	//按学号、比赛名称、获奖级别删除对应获奖记录
 	bool removeAwardByDetails(const std::string& stuID, const std::string& conName, const std::string& prize);
 
+	//按学生学号删除该学生的所有获奖记录
+	bool removeAwardsByStuID(const std::string& stuID);
+
 	//按比赛名称删除该比赛所有获奖记录
 	bool removeAwardsByConName(const std::string& conName);
 
