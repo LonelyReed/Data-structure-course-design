@@ -230,6 +230,43 @@ bool Database::removeAwardByDetails(const std::string& stuID, const std::string&
 	return removeAwardByKey(targetID);
 }
 
+//按学生学号删除该学生的所有获奖记录
+bool Database::removeAwardsByStuID(const std::string& stuID)
+{
+	//查找学生是否存在
+	bool foundStudent = false;
+	studentTable.traverse([&](const Student& s) {
+		if (s.id == stuID)
+		{
+			foundStudent = true;
+		}
+		});
+
+	//没有找到
+	if (!foundStudent)
+	{
+		std::cerr << " Error:student ID " << stuID << " Not found " << std::endl;
+		return false;
+	}
+	
+	//收集获得该比赛的所有相关获奖记录ID
+	std::vector<int> awardIDs;
+	awardTable.traverse([&](const Award& a) {
+		if (a.studentID == stuID)
+		{
+			awardIDs.push_back(a.awardID);
+		}
+		});
+
+	//一个一个删除获奖记录
+	for (int id : awardIDs)
+	{
+		removeAwardByKey(id);
+	}
+
+	return true;			//没有删除学生本身，只是删除了获奖信息
+}
+
 //按比赛名称删除该比赛所有获奖记录
 bool Database::removeAwardsByConName(const std::string& conName)
 {

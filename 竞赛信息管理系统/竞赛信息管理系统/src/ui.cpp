@@ -341,7 +341,18 @@ void UI::awardMenu()
 
             if (confirm == "y" || confirm == "Y")
             {
-                if(db.remove)
+                if (db.removeAwardsByStuID(id))
+                {
+                    std::cout << "该学生的所有相关获奖记录都已删除" << std::endl;
+                }
+                else
+                {
+                    std::cout << "删除失败！学生可能不存在" << std::endl;
+                }
+            }
+            else
+            {
+                std::cout << "已取消操作" << std::endl;
             }
 
             pause();
